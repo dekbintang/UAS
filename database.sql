@@ -1,0 +1,23 @@
+-- Database: koperasi
+CREATE DATABASE IF NOT EXISTS `koperasi` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `koperasi`;
+
+-- Tabel: member
+CREATE TABLE IF NOT EXISTS `member` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `nama` VARCHAR(100) NOT NULL,
+  `email` VARCHAR(100) NOT NULL UNIQUE,
+  `tier` VARCHAR(50) NOT NULL DEFAULT 'Bronze',
+  `no_ktp` VARCHAR(20) NOT NULL,
+  `no_telpon` VARCHAR(20) NOT NULL,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- Tabel: pembelian_produk
+CREATE TABLE IF NOT EXISTS `pembelian_produk` (
+  `id` INT AUTO_INCREMENT PRIMARY KEY,
+  `nama_produk` VARCHAR(150) NOT NULL,
+  `jumlah` INT NOT NULL DEFAULT 1,
+  `harga_per_unit` DECIMAL(12, 2) NOT NULL DEFAULT 0.00,
+  `created_at` TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
